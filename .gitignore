@@ -33,8 +33,7 @@ yarn-error.log*
 # vercel
 # .vercel
 
-next.config.js
-
 codegen.yml
-
-# env-config.js
+next.config.js
+.env-config.js
+.babelrc.js
