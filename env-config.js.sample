@@ -1,0 +1,4 @@
+module.exports = {
+	'process.env.REACT_APP_GRAPHQL_SCHEMA': 'https://xxxxx.herokuapp.com/graphql',
+	'process.env.REACT_APP_API_URL': 'https://xxxxx.herokuapp.com/todos?_sort=updateAt:DESC&_limit=2&_start=0'	
+}

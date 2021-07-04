@@ -1,0 +1,11 @@
+overwrite: true
+schema: "https://xxxxxx.herokuapp.com/graphql"
+documents: "src/**/*.graphql"
+generates:
+  src/types/graphql.v1.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:      
+      withHooks: true
