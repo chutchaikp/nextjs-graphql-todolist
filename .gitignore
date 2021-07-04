@@ -35,5 +35,5 @@ yarn-error.log*
 
 codegen.yml
 next.config.js
-.env-config.js
+env-config.js
 .babelrc.js
