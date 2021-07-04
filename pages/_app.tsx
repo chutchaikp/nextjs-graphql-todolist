@@ -8,11 +8,6 @@ import { ApolloClient, ApolloProvider, createHttpLink, DefaultOptions, InMemoryC
 
 import theme from './themes/theme'
 import { setContext } from '@apollo/client/link/context';
-// import { client } from './MyApolloClient';
-
-
-// const uri = "https://strpi-atlas.herokuapp.com/graphql"; //  'http://localhost:1337/graphql';
-// const client = new ApolloClient({ uri, cache: new InMemoryCache() });
 
 const { REACT_APP_GRAPHQL_SCHEMA } = process.env;
 

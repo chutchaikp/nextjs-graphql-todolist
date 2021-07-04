@@ -1,8 +1,6 @@
 import { ApolloClient, createHttpLink, DefaultOptions, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-// const uri = "https://strpi-atlas.herokuapp.com/graphql"; //  'http://localhost:1337/graphql';
-// const client = new ApolloClient({ uri, cache: new InMemoryCache() });
 const { REACT_APP_GRAPHQL_SCHEMA } = process.env;
 const httpLink = createHttpLink({
   uri: REACT_APP_GRAPHQL_SCHEMA,
