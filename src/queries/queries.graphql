@@ -9,7 +9,7 @@ query GetTodos {
 
 query GetTodosWithFetchMore($limit: Int, $start: Int) {
   # todos(limit: $limit, start: $start, sort: "updatedAt:desc") {
-  todos(limit: $limit, start: $start, sort: "updatedAt:desc") {
+  todos(limit: $limit, start: $start, sort: "createdAt:desc") {
     id
     title
     finished

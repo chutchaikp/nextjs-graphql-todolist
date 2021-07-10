@@ -45,6 +45,7 @@ const Home = (props: any) => {
     onError: (err) => {
       console.log(err)
     },
+    variables: { start: 0, limit: 2, },
     onCompleted: (data: any) => {
       debugger;
       const gdata = [...todos, ...data.todos || []]

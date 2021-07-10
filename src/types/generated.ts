@@ -2066,7 +2066,7 @@ export type GetTodosLazyQueryHookResult = ReturnType<typeof useGetTodosLazyQuery
 export type GetTodosQueryResult = Apollo.QueryResult<GetTodosQuery, GetTodosQueryVariables>;
 export const GetTodosWithFetchMoreDocument = gql`
     query GetTodosWithFetchMore($limit: Int, $start: Int) {
-  todos(limit: $limit, start: $start, sort: "updatedAt:desc") {
+  todos(limit: $limit, start: $start, sort: "createdAt:desc") {
     id
     title
     finished
