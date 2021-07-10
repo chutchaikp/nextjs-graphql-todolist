@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client'
+// mport { useQuery } from '@apollo/client'
 import { CheckCircleIcon } from '@chakra-ui/icons'
 import { Alert, AlertDescription, AlertIcon, Badge, Box, Text, Button, Checkbox, CloseButton, Flex, FormControl, HStack, Input, useToast, VStack } from '@chakra-ui/react'
 import axios from 'axios'
@@ -10,18 +10,24 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import MySkeleton from '../src/components/MySkeleton'
 
-import { GetTodosDocument, useCreateTodoMutation, useDeleteTodoMutation, useGetTodosQuery, useGetTodosWithFetchMoreLazyQuery, useUpdateTodoMutation } from '../src/types/generated'
-import styles from '../styles/Home.module.css'
+import { GetTodosDocument, useCreateTodoMutation, useDeleteTodoMutation, useGetTodosQuery, useGetTodosWithFetchMoreLazyQuery, useGetTodosWithFetchMoreQuery, useUpdateTodoMutation } from '../src/types/generated'
+// import styles from '../styles/Home.module.css'
+
+// const Home = (props: any) => {
+//   debugger;
+//   return (
+//     <div>Hello</div>
+//   )
+// }
 
 const Home = (props: any) => {
-
   const [todos, setTodos] = useState<any>([])
   const [todoCount, setTodoCount] = useState(0)
 
-  useEffect(() => {
-    setTodoCount(props.data.length)
-    setTodos(props.data.slice(0, 2))
-  }, [])
+  // useEffect(() => {
+  //   setTodoCount(props.data.length)
+  //   setTodos(props.data.slice(0, 2))
+  // }, [])
 
   // ------------------------------//------------------------------
 
@@ -33,6 +39,23 @@ const Home = (props: any) => {
 
   const [removingId, setRemovingId] = useState()
   const [updatingId, setUpdatingId] = useState<any>()
+
+  // networkStatus = ?,
+  const { data, loading, error, networkStatus, fetchMore, } = useGetTodosWithFetchMoreQuery({
+    onError: (err) => {
+      console.log(err)
+    },
+    onCompleted: (data: any) => {
+      debugger;
+      const gdata = [...todos, ...data.todos || []]
+      const gDataWithSelectProps = gdata.map((g) => {
+        return { ...g, selected: false, }
+      })
+
+      setTodos(gDataWithSelectProps)
+      setTodoCount(data.todosConnection?.aggregate?.count || 0)
+    }
+  })
 
   const [fetch, fetchVars] = useGetTodosWithFetchMoreLazyQuery({
     onCompleted: (data) => {
@@ -362,10 +385,22 @@ const Home = (props: any) => {
 export default Home;
 
 export async function getStaticProps() {
-  const apiURL = process.env.REACT_APP_API_URL + '';
-  const result = await axios.get(apiURL);
+  const schemaURL = process.env.NEXT_APP_API_URL;
+
   return {
-    props: { data: result.data }
+    props: {
+      // data: result.data,
+      schemaURL,
+    }
   }
+
+  // debugger;
+  // let data = "hi"
+  // data = "there"
+  // return {
+  //   props: {
+  //     data: data
+  //   }
+  // }
 }
 

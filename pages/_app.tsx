@@ -34,43 +34,14 @@ const theme = extendTheme({
   breakpoints
 })
 //#endregion
-
-const { REACT_APP_GRAPHQL_SCHEMA } = process.env;
-
-console.log(REACT_APP_GRAPHQL_SCHEMA)
-
-const httpLink = createHttpLink({
-  uri: REACT_APP_GRAPHQL_SCHEMA,
-});
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('token');
-  // const token = getTokens();
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    }
-  };
-});
-const defaultOptions: DefaultOptions = {
-  watchQuery: {
-    fetchPolicy: 'no-cache',
-    errorPolicy: 'ignore',
-  },
-  query: {
-    fetchPolicy: 'no-cache',
-    errorPolicy: 'all',
-  },
-};
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-  defaultOptions: defaultOptions,
-});
+let _graphQLClient: any;
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  // debugger;
+
+  const graphqlUri = useGraphqlSchema(pageProps);
+  const client = _graphQLClient || APClient(graphqlUri);
 
   return (
     <ApolloProvider client={client}>
@@ -81,3 +52,48 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 export default MyApp
+
+
+export const useGraphqlSchema = (pageProps: any) => {
+  return pageProps.schemaURL
+}
+
+export const APClient = (graphqlUri: string) => {
+  // debugger;  
+  const REACT_APP_GRAPHQL_SCHEMA = graphqlUri;
+  const httpLink = createHttpLink({
+    uri: REACT_APP_GRAPHQL_SCHEMA,
+  });
+  const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    const token = localStorage.getItem('token');
+    // const token = getTokens();
+    // return the headers to the context so httpLink can read them
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : "",
+      }
+    };
+  });
+  const defaultOptions: DefaultOptions = {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'ignore',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  };
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+    defaultOptions: defaultOptions,
+  });
+
+  _graphQLClient = client;
+
+  return client;
+
+}
