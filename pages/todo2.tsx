@@ -391,7 +391,7 @@ export default Todo2;
 
 export async function getStaticProps() {
 	// debugger;
-	const schemaURL = process.env.NEXT_APP_API_URL;
+	const schemaURL = process.env.NEXT_APP_GRAPHQL_SCHEMA;
 	return {
 		props: {
 			schemaURL,

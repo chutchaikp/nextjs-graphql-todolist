@@ -385,7 +385,7 @@ const Home = (props: any) => {
 export default Home;
 
 export async function getStaticProps() {
-  const schemaURL = process.env.NEXT_APP_API_URL;
+  const schemaURL = process.env.NEXT_APP_GRAPHQL_SCHEMA;
 
   return {
     props: {
