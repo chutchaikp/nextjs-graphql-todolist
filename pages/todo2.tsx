@@ -8,6 +8,7 @@ import { assertValidExecutionArguments } from 'graphql/execution/execute'
 import Head from 'next/head'
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
+import { GetTodosForHome } from '../lib/api'
 
 import MySkeleton from '../src/components/MySkeleton'
 
@@ -151,6 +152,19 @@ const Todo2 = (props: any) => {
 
 	if (todos.length === 0 && loading) {
 		return (<MySkeleton />)
+	}
+
+	if (error) {
+		console.log(error);
+		return (
+			<>
+				<div>Something went wrong !!!!</div>
+				<p>
+					xx
+				</p>
+			</>
+
+		)
 	}
 
 	// if (fetchVars.error) {
@@ -390,8 +404,12 @@ const Todo2 = (props: any) => {
 export default Todo2;
 
 export async function getStaticProps() {
-	// debugger;
+	debugger;
+
+	const response = (await GetTodosForHome()) || []
+
 	const schemaURL = process.env.NEXT_APP_GRAPHQL_SCHEMA;
+
 	return {
 		props: {
 			schemaURL,

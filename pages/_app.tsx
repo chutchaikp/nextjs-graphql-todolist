@@ -1,4 +1,6 @@
 import '../styles/globals.css'
+// import './styles.css'
+import { Provider } from 'next-auth/client'
 import type { AppProps } from 'next/app'
 import React from 'react'
 import { ChakraProvider } from '@chakra-ui/react'
@@ -34,66 +36,74 @@ const theme = extendTheme({
   breakpoints
 })
 //#endregion
-let _graphQLClient: any;
+
+let _client: any;
+let _token: any;
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  // debugger;
-
-  const graphqlUri = useGraphqlSchema(pageProps);
-  const client = _graphQLClient || APClient(graphqlUri);
+  let client = MyApolloClient(pageProps);
 
   return (
-    <ApolloProvider client={client}>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </ApolloProvider>
+    <Provider options={{ clientMaxAge: 0, keepAlive: 0 }} session={pageProps.session} >
+      <ApolloProvider client={client}>
+        <ChakraProvider theme={theme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </ApolloProvider>
+    </Provider>
   )
 }
+
 export default MyApp
 
 
-export const useGraphqlSchema = (pageProps: any) => {
-  return pageProps.schemaURL
-}
+export function MyApolloClient(pageProps: any) {
+  // let _client = null;
+  debugger;
 
-export const APClient = (graphqlUri: string) => {
-  // debugger;  
-  const REACT_APP_GRAPHQL_SCHEMA = graphqlUri;
-  const httpLink = createHttpLink({
-    uri: REACT_APP_GRAPHQL_SCHEMA,
-  });
-  const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    const token = localStorage.getItem('token');
-    // const token = getTokens();
-    // return the headers to the context so httpLink can read them
-    return {
-      headers: {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : "",
+
+  try {
+    const { jwt, url, } = pageProps.graphQlConnection;
+
+    if (jwt === _token) {
+      return _client;
+    }
+
+    _token = jwt;
+
+    const httpLink = createHttpLink({
+      uri: url + '/graphql',
+    });
+
+    const authLink = setContext((_, { headers }) => {
+      // get the authentication token from local storage if it exists
+      // const token = localStorage.getItem('token');
+      // console.log(token);
+      return {
+        headers: {
+          ...headers,
+          authorization: _token ? `Bearer ${_token}` : "",
+        }
       }
-    };
-  });
-  const defaultOptions: DefaultOptions = {
-    watchQuery: {
-      fetchPolicy: 'no-cache',
-      errorPolicy: 'ignore',
-    },
-    query: {
-      fetchPolicy: 'no-cache',
-      errorPolicy: 'all',
-    },
-  };
-  const client = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-    defaultOptions: defaultOptions,
-  });
+    });
 
-  _graphQLClient = client;
+    const defaultOptions: DefaultOptions = {
+      watchQuery: { fetchPolicy: 'no-cache', errorPolicy: 'ignore', },
+      query: { fetchPolicy: 'no-cache', errorPolicy: 'all', },
+    }
 
-  return client;
+    _client = new ApolloClient({
+      link: authLink.concat(httpLink),
+      cache: new InMemoryCache(),
+      defaultOptions: defaultOptions,
+    });
+
+  } catch (error) {
+    debugger;
+
+  }
+
+  return _client;
 
 }
