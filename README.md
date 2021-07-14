@@ -5,6 +5,4 @@
 - Next js
 - GraphQL
 
----
-
 ![screen](screen.png)
