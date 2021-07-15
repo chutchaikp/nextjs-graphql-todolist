@@ -403,7 +403,7 @@ const Todo2 = (props: any) => {
 
 export default Todo2;
 
-// export async function getServerSideProps() {
+// export async function getSer x verSideProps() {
 // 	debugger;
 
 // 	const response = (await GetTodosForHome()) || []

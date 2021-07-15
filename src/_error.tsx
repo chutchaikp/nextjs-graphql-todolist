@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Router from 'next/router';
 
@@ -17,7 +16,7 @@ Error.getInitialProps = ({ res, err }: any) => {
 	return { statusCode }
 }
 
-// export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
+// export const getServer SideProps: GetServer ideProps = async ({ res, req }) => {
 //   const statusCode = res ? res.statusCode : 404;
 
 //   if (statusCode === 404) {

@@ -25,12 +25,12 @@ const Start: React.FC<startProps> = ({ }) => {
 }
 export default Start
 
-export async function getServerSideProps(context: any) {
-	debugger;
-	const session = await getSession(context)
-	return {
-		props: {
-			session,
-		}
-	}
-}
+// export async function getServer SideProps(context: any) {
+// 	debugger;
+// 	const session = await getSession(context)
+// 	return {
+// 		props: {
+// 			session,
+// 		}
+// 	}
+// }

@@ -42,6 +42,16 @@ let _token: any;
 
 function MyApp({ Component, pageProps }: AppProps) {
 
+  debugger;
+
+  if (!_client && !pageProps.graphQlConnection) {
+    return (
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    )
+  }
+
   let client = MyApolloClient(pageProps);
 
   return (
