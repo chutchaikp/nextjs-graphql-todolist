@@ -39,7 +39,7 @@ const Lottery: React.FC<lotteryProps> = ({ }) => {
 }
 export default Lottery
 
-export const getStaticProps = async (context: any) => {
+export const getServerSideProps = async (context: any) => {
 
 	const session = await getSession(context)
 	const jwt = await GraphQLLogin(session?.user?.email || '');

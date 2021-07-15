@@ -10,14 +10,14 @@ import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import { GetTodosForHome } from '../lib/api'
 
-import MySkeleton from '../src/components/MySkeleton'
+import MySkeleton from './components/MySkeleton'
 
 import {
 	useCreateTodoMutation,
 	useDeleteTodoMutation, useGetTodosQuery,
 	useGetTodosWithFetchMoreQuery,
 	useUpdateTodoMutation
-} from '../src/types/generated'
+} from './types/generated'
 
 const Todo2 = (props: any) => {
 
@@ -403,17 +403,17 @@ const Todo2 = (props: any) => {
 
 export default Todo2;
 
-export async function getStaticProps() {
-	debugger;
+// export async function getServerSideProps() {
+// 	debugger;
 
-	const response = (await GetTodosForHome()) || []
+// 	const response = (await GetTodosForHome()) || []
 
-	const schemaURL = process.env.NEXT_APP_GRAPHQL_SCHEMA;
+// 	const schemaURL = process.env.NEXT_APP_GRAPHQL_SCHEMA;
 
-	return {
-		props: {
-			schemaURL,
-		}
-	}
-}
+// 	return {
+// 		props: {
+// 			schemaURL,
+// 		}
+// 	}
+// }
 

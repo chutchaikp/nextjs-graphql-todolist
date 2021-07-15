@@ -83,7 +83,7 @@ export default function Header() {
 					<ul className={styles.navItems}>
 						<li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>
 						<li className={styles.navItem}><Link href="/start"><a>Start</a></Link></li>
-						<li className={styles.navItem}><Link href="/todo2"><a>Todo List</a></Link></li>
+						{/* <li className={styles.navItem}><Link href="/todo2"><a>Todo List</a></Link></li> */}
 						<li className={styles.navItem}><Link href="/lottery"><a>Lottery</a></Link></li>
 					</ul>
 				</nav>
