@@ -1,4 +1,5 @@
 import React from 'react'
+import Layout from '../components/layout'
 
 interface indexProps {
 
@@ -6,7 +7,9 @@ interface indexProps {
 
 const index: React.FC<indexProps> = ({ }) => {
 	return (
-		<div>Hello ...</div>
+		<Layout>
+			<div>Home ...</div>
+		</Layout>
 	);
 }
 export default index

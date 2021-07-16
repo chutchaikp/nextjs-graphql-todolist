@@ -8,7 +8,7 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import MySkeleton from '../src/components/MySkeleton';
 import { formatDistance } from 'date-fns';
 
-const Index = (props: any) => {
+const TodoApp = (props: any) => {
 
   const [todos, setTodos] = useState<any>([])
   const [todoCount, setTodoCount] = useState(0)
@@ -29,15 +29,15 @@ const Index = (props: any) => {
     }
   })
 
-  // useEffect(() => {
-  //   try {
-  //     setTodoCount(props.data.todosConnection.aggregate.count)
-  //     setTodos(props.data.todos)
+  useEffect(() => {
+    try {
+      setTodoCount(props.data.todosConnection.aggregate.count)
+      setTodos(props.data.todos)
 
-  //   } catch (error) {
-  //     debugger;
-  //   }
-  // }, [])
+    } catch (error) {
+      debugger;
+    }
+  }, [])
 
   // ------------------------------//------------------------------
 
@@ -376,21 +376,22 @@ const Index = (props: any) => {
 
 
 
-// export async function getServer SideProps(context: any) {
-// Index.getInitialProps = async (context: any) => {
+export async function getServerSideProps(context: any) {
 
-//   const session = await getSession(context)
-//   const jwt = await GraphQLLogin(session?.user?.email || '');
-//   const response = (await GetTodosForHome()) || []
+  // Index.getInitialProps = async (context: any) => {
 
-//   // debugger;
-//   return {
-//     props: {
-//       session,
-//       graphQlConnection: { jwt, url: process.env.GRAPHQL_SCHEMA_BASE_URL, },
-//       data: response,
-//     }
-//   }
-// }
+  const session = await getSession(context)
+  const jwt = await GraphQLLogin(session?.user?.email || '');
+  const response = (await GetTodosForHome()) || []
 
-export default Index;
+  // debugger;
+  return {
+    props: {
+      session,
+      graphQlConnection: { jwt, url: process.env.GRAPHQL_SCHEMA_BASE_URL, },
+      data: response,
+    }
+  }
+}
+
+export default TodoApp;
