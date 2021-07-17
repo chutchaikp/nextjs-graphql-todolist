@@ -168,7 +168,7 @@ const TodoApp = (props: any) => {
 
   return (
     <Layout>
-      <Flex align="center" direction="column" py="1rem" w="100%" >
+      <Flex align="center" direction="column" w="100%" >
 
         <VStack spacing={5} w="100%"  >
 
@@ -379,6 +379,7 @@ const TodoApp = (props: any) => {
 export async function getServerSideProps(context: any) {
 
   // Index.getInitialProps = async (context: any) => {
+  debugger;
 
   const session = await getSession(context)
   const jwt = await GraphQLLogin(session?.user?.email || '');
