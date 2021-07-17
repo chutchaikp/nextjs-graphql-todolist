@@ -1,2 +1,9 @@
 [build]
-command = "CI= npm run build"
+ command = "CI= npm run build"
+ publish = "/out"
+ base = "/"
+
+[[redirects]]
+ from = "/*"
+ to = "/index.html"
+ status = "200"
