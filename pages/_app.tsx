@@ -42,6 +42,12 @@ let _token: any;
 
 function MyApp({ Component, pageProps }: AppProps) {
 
+  return (
+    <ChakraProvider theme={theme}>
+      <Component {...pageProps} />
+    </ChakraProvider>
+  )
+
   debugger;
 
   if (!_client && !pageProps.graphQlConnection) {
