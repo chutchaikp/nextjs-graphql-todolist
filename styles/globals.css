@@ -9,7 +9,7 @@ body {
   color: #030303;
   font-size: 1.6rem;
   font-weight: 500;
-  line-height: 2.2rem;
+  /* line-height: 2.2rem; */
   letter-spacing: 0.3px;
 }
 
@@ -42,7 +42,7 @@ ul {
   list-style: none;
 }
 ul > li {
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
   padding-bottom: 0.5rem;
   /* border-bottom-width: 1px;
   border-color: #e5e7eb; */

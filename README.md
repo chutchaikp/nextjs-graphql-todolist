@@ -4,6 +4,7 @@
 
 - Next js
 - GraphQL
+- Auth0
 
 ---
 
