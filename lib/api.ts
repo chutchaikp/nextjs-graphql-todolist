@@ -5,20 +5,17 @@ import axios from "axios";
 let _jwt = "";
 let _identifier = "";
 
-export async function GraphQLLogin(identifier: string) {
+export async function GraphQLLogin() {
 	try {
-		if (!identifier) {
-			return "";
-		}
-
-		debugger;
-		if (_identifier === identifier) {
+		if (_jwt) {
 			return _jwt;
 		}
 
+		debugger;
+
 		const url = `${process.env.GRAPHQL_SCHEMA_BASE_URL}/auth/local`;
 		const { data } = await axios.post(url, {
-			identifier: identifier,
+			identifier: process.env.GRAPHQL_USER,
 			password: process.env.GRAPHQL_PASSWORD,
 		});
 
@@ -94,6 +91,9 @@ query GetTodosWithFetchMore($limit: Int, $start: Int) {
  */
 
 export async function GetTodosForHome() {
+
+	debugger;
+
 	const data = await fetchAPI(
 		// 	`
 		//   query Posts($where: JSON){

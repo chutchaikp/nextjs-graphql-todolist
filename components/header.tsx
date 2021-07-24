@@ -8,6 +8,8 @@ import { useUser } from '@auth0/nextjs-auth0';
 
 export default function Header() {
 
+	debugger;
+
 	const { user, error, isLoading } = useUser();
 
 	if (isLoading) return <div>Loading...</div>;

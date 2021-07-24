@@ -1,4 +1,3 @@
-import { getSession } from 'next-auth/client';
 import React, { useEffect, useRef, useState } from 'react'
 import { GetTodosForHome, GraphQLLogin } from '../lib/api'
 import Layout from '../components/layout';
@@ -7,6 +6,7 @@ import { useCreateTodoMutation, useDeleteTodoMutation, useGetTodosWithFetchMoreL
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import MySkeleton from '../src/components/MySkeleton';
 import { formatDistance } from 'date-fns';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 const TodoApp = (props: any) => {
 
@@ -374,25 +374,20 @@ const TodoApp = (props: any) => {
   )
 }
 
+// export async function getServerSideProps(context: any) {
+//   debugger;
+//   // const session = await getSession(context)
+//   const jwt = await GraphQLLogin();
+//   const response = (await GetTodosForHome()) || []
 
+//   return {
+//     props: {
+//       graphQlConnection: { jwt, url: process.env.GRAPHQL_SCHEMA_BASE_URL, },
+//       data: response, // TodoData
+//     }
+//   }
+// }
 
-export async function getServerSideProps(context: any) {
-
-  // Index.getInitialProps = async (context: any) => {
-  debugger;
-
-  const session = await getSession(context)
-  const jwt = await GraphQLLogin(session?.user?.email || '');
-  const response = (await GetTodosForHome()) || []
-
-  // debugger;
-  return {
-    props: {
-      session,
-      graphQlConnection: { jwt, url: process.env.GRAPHQL_SCHEMA_BASE_URL, },
-      data: response,
-    }
-  }
-}
+export const getServerSideProps = withPageAuthRequired();
 
 export default TodoApp;

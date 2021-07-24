@@ -1,0 +1,26 @@
+
+// import React from 'react'
+// import Layout from '../components/layout';
+
+// interface startProps {
+
+// }
+
+// const Start: React.FC<startProps> = ({ }) => {
+
+
+
+// 	console.log("---------//---------")
+// 	console.log(session);
+
+// 	return (
+// 		<Layout>
+
+// 			Start Page ...
+
+// 			{new Date().toISOString()}
+
+// 		</Layout>
+// 	);
+// }
+// export default Start
