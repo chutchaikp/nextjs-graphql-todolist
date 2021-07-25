@@ -48,17 +48,17 @@ const theme = extendTheme({
 
 export default function App({ Component, pageProps }: AppProps): React.ReactElement<AppProps> {
 
-  debugger;
+  // debugger;
 
-  if (!pageProps.graphQlConnection) {
-    return (
-      <UserProvider >
-        <ChakraProvider theme={theme}>
-          <Component {...pageProps} />
-        </ChakraProvider>
-      </UserProvider>
-    )
-  }
+  // if (!pageProps.graphQlConnection) {
+  return (
+    <UserProvider >
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </UserProvider>
+  )
+  // }
 
 
   debugger;
