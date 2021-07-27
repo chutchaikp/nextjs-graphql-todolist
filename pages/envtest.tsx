@@ -5,12 +5,15 @@ import Layout from '../components/layout';
 
 const Env = (props: any) => {
 
-	debugger;
+	// debugger;
 	return (
 		<Layout>
-			<div>
+			<p>
+				process.env.NODE_ENV
+			</p>
+			<p>
 				{process.env.NODE_ENV}
-			</div>
+			</p>
 		</Layout>
 	)
 
@@ -31,7 +34,7 @@ const Env = (props: any) => {
 }
 
 Env.getInitialProps = async (context: any) => {
-	debugger;
+	// debugger;
 	const secret = process.env.AUTH0_CLIENT_SECRET;
 
 	return {
