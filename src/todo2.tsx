@@ -111,6 +111,7 @@ const Todo2 = (props: any) => {
 					variables: {
 						todo: {
 							title: iRef.current['title'].value,
+							create_by: "xxx",
 							finished: false,
 						}
 					}

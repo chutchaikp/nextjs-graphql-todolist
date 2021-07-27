@@ -42,10 +42,10 @@ ul {
   list-style: none;
 }
 ul > li {
-  /* padding-top: 1rem; */
+  padding-top: 1rem;
   padding-bottom: 0.5rem;
-  /* border-bottom-width: 1px;
-  border-color: #e5e7eb; */
+  border-bottom-width: 1px;
+  border-color: #e5e7eb;
 }
 ul > li:last-child {
   border-bottom-width: 0;

@@ -1,10 +1,19 @@
+
 import React from 'react'
+import Error from 'next/error'
+import Layout from '../components/layout';
 
-interface envProps {
+const Env = (props: any) => {
 
-}
+	debugger;
+	return (
+		<Layout>
+			<div>
+				{process.env.NODE_ENV}
+			</div>
+		</Layout>
+	)
 
-const env: React.FC<envProps> = ({ }) => {
 	return (
 		<div>
 			<span>process.env.AUTH0_SECRET</span>
@@ -20,4 +29,19 @@ const env: React.FC<envProps> = ({ }) => {
 		</div>
 	);
 }
-export default env
+
+Env.getInitialProps = async (context: any) => {
+	debugger;
+	const secret = process.env.AUTH0_CLIENT_SECRET;
+
+	return {
+		props: {
+			data: {
+				secret,
+			}
+		}
+	}
+}
+
+
+export default Env

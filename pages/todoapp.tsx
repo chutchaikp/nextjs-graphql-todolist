@@ -6,7 +6,8 @@ import { useCreateTodoMutation, useDeleteTodoMutation, useGetTodosWithFetchMoreL
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import MySkeleton from '../src/components/MySkeleton';
 import { formatDistance } from 'date-fns';
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
+// import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
 
 const TodoApp = (props: any) => {
 
@@ -28,6 +29,7 @@ const TodoApp = (props: any) => {
       setTodoCount(data.todosConnection?.aggregate?.count || 0)
     }
   })
+
 
   useEffect(() => {
     try {
@@ -72,6 +74,20 @@ const TodoApp = (props: any) => {
   const [del, delVars] = useDeleteTodoMutation();
   const [update, updateVars] = useUpdateTodoMutation();
 
+  // debugger;
+  const { user, error, isLoading } = useUser();
+
+  if (error) {
+    return (
+      <p>{error.message}</p>
+    )
+  }
+  if (isLoading) {
+    return (
+      <span>Waiting ...</span>
+    )
+  }
+
   const validateInvalid = (e: any) => {
     const format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     const frm = e.target;
@@ -112,10 +128,13 @@ const TodoApp = (props: any) => {
     } else {
       // Mutate .....      
       try {
+        debugger;
+
         const res = await create({
           variables: {
             todo: {
               title: iRef.current['title'].value,
+              create_by: user?.email || "x",
               finished: false,
             }
           }
@@ -128,7 +147,9 @@ const TodoApp = (props: any) => {
 
         iRef.current['title'].value = '';
 
-      } catch (error) {
+      } catch (err) {
+
+        console.log(err);
         debugger;
       }
     }
@@ -238,7 +259,7 @@ const TodoApp = (props: any) => {
                           if (!td.selected) return;
                           const result = await update({
                             variables: {
-                              Todo: { finished: !td.finished },
+                              Todo: { finished: !td.finished, create_by: user?.name },
                               id: td.id,
                             },
                           })
@@ -255,7 +276,7 @@ const TodoApp = (props: any) => {
                         const data = [...prev]
                         const newData = data.map((x: any) => {
                           if (x.selected) {
-                            return { ...x, finished: !x.finished, }
+                            return { ...x, finished: !x.finished, create_by: user?.name }
                           }
                           return { ...x }
                         })
@@ -268,9 +289,10 @@ const TodoApp = (props: any) => {
 
                 </Flex>
 
-
               </li>
+
               {todos.map((t: any) => {
+
                 const dist = formatDistance(
                   new Date(t.updatedAt),
                   new Date(),
@@ -299,7 +321,10 @@ const TodoApp = (props: any) => {
                         <Box flexGrow={1}>
                           <div className={t.finished ? 'title todo-finished' : 'title'}>{t.title}</div>
 
-                          <Badge borderRadius="full" px="2" colorScheme="teal">{dist}</Badge>
+                          <span>
+                            Update by {t.create_by}
+                            <Badge borderRadius="full" px="2" mx="1" colorScheme="teal">{dist}</Badge>
+                          </span>
                         </Box>
                         <HStack w="150px">
 
@@ -309,7 +334,7 @@ const TodoApp = (props: any) => {
 
                             const result = await update({
                               variables: {
-                                Todo: { finished: !t.finished },
+                                Todo: { finished: !t.finished, create_by: user?.name },
                                 id: t.id
                               }
                             })
@@ -317,7 +342,7 @@ const TodoApp = (props: any) => {
                               const data = [...prev];
                               const newData = data.map((x) => {
                                 if (x.id === t.id) {
-                                  return { ...x, finished: !x.finished, updatedAt: new Date(), }
+                                  return { ...x, finished: !x.finished, create_by: user?.name, updatedAt: new Date(), }
                                 }
                                 return { ...x }
                               });
@@ -374,20 +399,34 @@ const TodoApp = (props: any) => {
   )
 }
 
-// export async function getServerSideProps(context: any) {
+// TodoApp.getInitialProps = async (ctx: any) => {
 //   debugger;
-//   // const session = await getSession(context)
-//   const jwt = await GraphQLLogin();
+//   const jwt = process.env.JWT;
 //   const response = (await GetTodosForHome()) || []
-
+//   debugger;
 //   return {
-//     props: {
-//       graphQlConnection: { jwt, url: process.env.GRAPHQL_SCHEMA_BASE_URL, },
-//       data: response, // TodoData
-//     }
+//     // props: 
+//     graphQlConnection: { jwt, url: process.env.GRAPHQL_SCHEMA_BASE_URL, },
+//     data: response,
 //   }
 // }
 
-export const getServerSideProps = withPageAuthRequired();
+export const getServerSideProps = async ({ req, res }: any) => {
+  let token = req.cookies.token;
+  const graphql_base_url = process.env.GRAPHQL_SCHEMA_BASE_URL
+  if (!token) {
+    token = await GraphQLLogin(req, res);
+  }
+  const response = (await GetTodosForHome(token)) || []
+  return {
+    props: {
+      graphQlConnection: {
+        token,
+        graphql_base_url,
+      },
+      data: response,
+    }
+  }
+}
 
 export default TodoApp;

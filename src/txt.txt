@@ -10,7 +10,6 @@ import { UserProvider } from '@auth0/nextjs-auth0';
 //#region ui config 
 import { ChakraProvider, extendTheme, ThemeConfig } from "@chakra-ui/react"
 import { createBreakpoints } from "@chakra-ui/theme-tools"
-import { __DirectiveLocation } from 'graphql';
 
 // 2. Add your color mode config
 const config: ThemeConfig = {
@@ -34,9 +33,41 @@ const theme = extendTheme({
 //#endregion
 //#endregion
 
+// -------------------------TODO-------------------------
+
+// // init apollo
+// const httpLink = createHttpLink({
+//   uri: url + '/graphql',
+// });
+
+// const authLink = setContext((_, { headers }) => {
+//   // get the authentication token from local storage if it exists
+//   // const token = localStorage.getItem('token');
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: _token ? `Bearer ${_token}` : "",
+//     }
+//   }
+// });
+
+// const defaultOptions: DefaultOptions = {
+//   watchQuery: { fetchPolicy: 'no-cache', errorPolicy: 'ignore', },
+//   query: { fetchPolicy: 'no-cache', errorPolicy: 'all', },
+// }
+
+// let _client = new ApolloClient({
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+//   defaultOptions: defaultOptions,
+// });
+
+
 export default function App({ Component, pageProps }: AppProps): React.ReactElement<AppProps> {
 
-  if (!pageProps.graphQlConnection) {
+  debugger;
+
+  if (!pageProps.graphQlConnection.token) {
     return (
       <UserProvider >
         <ChakraProvider theme={theme}>
@@ -59,16 +90,27 @@ export default function App({ Component, pageProps }: AppProps): React.ReactElem
   );
 }
 
-let _client: any;
 
 export function MyApolloClient(pageProps: any) {
+  // let _client = null;
+  debugger;
+
   try {
     const { token, graphql_base_url, } = pageProps.graphQlConnection;
+
+    // if (jwt === _token) {
+    //   return _client;
+    // }
+
+    // _token = jwt;
+
     const httpLink = createHttpLink({
       uri: graphql_base_url + '/graphql',
     });
 
     const authLink = setContext((_, { headers }) => {
+      // get the authentication token from local storage if it exists
+      // const token = localStorage.getItem('token');
       return {
         headers: {
           ...headers,
@@ -82,17 +124,15 @@ export function MyApolloClient(pageProps: any) {
       query: { fetchPolicy: 'no-cache', errorPolicy: 'all', },
     }
 
-    _client = new ApolloClient({
+    return new ApolloClient({
       link: authLink.concat(httpLink),
       cache: new InMemoryCache(),
       defaultOptions: defaultOptions,
     });
 
-    return _client;
-
   } catch (error) {
     debugger;
-    return _client;
+    return new ApolloClient();
   }
 }
 

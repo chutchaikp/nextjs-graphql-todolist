@@ -85,7 +85,7 @@ export type LocaleInput = {
 };
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | ProductType | ProductTypeConnection | ProductTypeAggregator | ProductTypeGroupBy | ProductTypeConnectionId | ProductTypeConnection_Id | ProductTypeConnectionCreatedAt | ProductTypeConnectionUpdatedAt | ProductTypeConnectionName | ProductTypeConnectionCode | ProductTypeConnectionPublished_At | CreateProductTypePayload | UpdateProductTypePayload | DeleteProductTypePayload | Product | ProductConnection | ProductAggregator | ProductAggregatorSum | ProductAggregatorAvg | ProductAggregatorMin | ProductAggregatorMax | ProductGroupBy | ProductConnectionId | ProductConnection_Id | ProductConnectionCreatedAt | ProductConnectionUpdatedAt | ProductConnectionCode | ProductConnectionProduct_Type | ProductConnectionName | ProductConnectionDetail | ProductConnectionCost_Price | ProductConnectionSale_Price | ProductConnectionRemark | ProductConnectionPicture1 | ProductConnectionPicture2 | ProductConnectionPicture3 | ProductConnectionPicture1_Delete_Token | ProductConnectionPicture2_Delete_Token | ProductConnectionPicture3_Delete_Token | ProductConnectionPublished_At | CreateProductPayload | UpdateProductPayload | DeleteProductPayload | Service | ServiceConnection | ServiceAggregator | ServiceGroupBy | ServiceConnectionId | ServiceConnection_Id | ServiceConnectionCreatedAt | ServiceConnectionUpdatedAt | ServiceConnectionName | ServiceConnectionDesc | ServiceConnectionPublished_At | CreateServicePayload | UpdateServicePayload | DeleteServicePayload | Team | TeamConnection | TeamAggregator | TeamGroupBy | TeamConnectionId | TeamConnection_Id | TeamConnectionCreatedAt | TeamConnectionUpdatedAt | TeamConnectionName | TeamConnectionCountry | TeamConnectionPublished_At | CreateTeamPayload | UpdateTeamPayload | DeleteTeamPayload | Todo | TodoConnection | TodoAggregator | TodoGroupBy | TodoConnectionId | TodoConnection_Id | TodoConnectionCreatedAt | TodoConnectionUpdatedAt | TodoConnectionTitle | TodoConnectionFinished | TodoConnectionPublished_At | CreateTodoPayload | UpdateTodoPayload | DeleteTodoPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_Id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_Id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_Id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | ProductType | ProductTypeConnection | ProductTypeAggregator | ProductTypeGroupBy | ProductTypeConnectionId | ProductTypeConnection_Id | ProductTypeConnectionCreatedAt | ProductTypeConnectionUpdatedAt | ProductTypeConnectionName | ProductTypeConnectionCode | ProductTypeConnectionPublished_At | CreateProductTypePayload | UpdateProductTypePayload | DeleteProductTypePayload | Product | ProductConnection | ProductAggregator | ProductAggregatorSum | ProductAggregatorAvg | ProductAggregatorMin | ProductAggregatorMax | ProductGroupBy | ProductConnectionId | ProductConnection_Id | ProductConnectionCreatedAt | ProductConnectionUpdatedAt | ProductConnectionCode | ProductConnectionProduct_Type | ProductConnectionName | ProductConnectionDetail | ProductConnectionCost_Price | ProductConnectionSale_Price | ProductConnectionRemark | ProductConnectionPicture1 | ProductConnectionPicture2 | ProductConnectionPicture3 | ProductConnectionPicture1_Delete_Token | ProductConnectionPicture2_Delete_Token | ProductConnectionPicture3_Delete_Token | ProductConnectionPublished_At | CreateProductPayload | UpdateProductPayload | DeleteProductPayload | Service | ServiceConnection | ServiceAggregator | ServiceGroupBy | ServiceConnectionId | ServiceConnection_Id | ServiceConnectionCreatedAt | ServiceConnectionUpdatedAt | ServiceConnectionName | ServiceConnectionDesc | ServiceConnectionPublished_At | CreateServicePayload | UpdateServicePayload | DeleteServicePayload | Team | TeamConnection | TeamAggregator | TeamGroupBy | TeamConnectionId | TeamConnection_Id | TeamConnectionCreatedAt | TeamConnectionUpdatedAt | TeamConnectionName | TeamConnectionCountry | TeamConnectionPublished_At | CreateTeamPayload | UpdateTeamPayload | DeleteTeamPayload | Todo | TodoConnection | TodoAggregator | TodoGroupBy | TodoConnectionId | TodoConnection_Id | TodoConnectionCreatedAt | TodoConnectionUpdatedAt | TodoConnectionTitle | TodoConnectionFinished | TodoConnectionCreate_By | TodoConnectionPublished_At | CreateTodoPayload | UpdateTodoPayload | DeleteTodoPayload | Todo2 | Todo2Connection | Todo2Aggregator | Todo2GroupBy | Todo2ConnectionId | Todo2Connection_Id | Todo2ConnectionCreatedAt | Todo2ConnectionUpdatedAt | Todo2ConnectionTitle | Todo2ConnectionCreate_By | Todo2ConnectionPublished_At | CreateTodo2Payload | UpdateTodo2Payload | DeleteTodo2Payload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_Id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_Id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_Id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload;
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -104,6 +104,9 @@ export type Mutation = {
   createTodo?: Maybe<CreateTodoPayload>;
   updateTodo?: Maybe<UpdateTodoPayload>;
   deleteTodo?: Maybe<DeleteTodoPayload>;
+  createTodo2?: Maybe<CreateTodo2Payload>;
+  updateTodo2?: Maybe<UpdateTodo2Payload>;
+  deleteTodo2?: Maybe<DeleteTodo2Payload>;
   /** Delete one file */
   deleteFile?: Maybe<DeleteFilePayload>;
   /** Create a new role */
@@ -201,6 +204,21 @@ export type MutationUpdateTodoArgs = {
 
 export type MutationDeleteTodoArgs = {
   input?: Maybe<DeleteTodoInput>;
+};
+
+
+export type MutationCreateTodo2Args = {
+  input?: Maybe<CreateTodo2Input>;
+};
+
+
+export type MutationUpdateTodo2Args = {
+  input?: Maybe<UpdateTodo2Input>;
+};
+
+
+export type MutationDeleteTodo2Args = {
+  input?: Maybe<DeleteTodo2Input>;
 };
 
 
@@ -619,6 +637,9 @@ export type Query = {
   todo?: Maybe<Todo>;
   todos?: Maybe<Array<Maybe<Todo>>>;
   todosConnection?: Maybe<TodoConnection>;
+  todo2?: Maybe<Todo2>;
+  todo2s?: Maybe<Array<Maybe<Todo2>>>;
+  todo2sConnection?: Maybe<Todo2Connection>;
   files?: Maybe<Array<Maybe<UploadFile>>>;
   filesConnection?: Maybe<UploadFileConnection>;
   role?: Maybe<UsersPermissionsRole>;
@@ -740,6 +761,29 @@ export type QueryTodosArgs = {
 
 
 export type QueryTodosConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryTodo2Args = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryTodo2sArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryTodo2sConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -996,9 +1040,95 @@ export type Todo = {
   _id: Scalars['ID'];
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
-  title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
   finished?: Maybe<Scalars['Boolean']>;
+  create_by: Scalars['String'];
   published_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type Todo2 = {
+  __typename?: 'Todo2';
+  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  updatedAt: Scalars['DateTime'];
+  title: Scalars['String'];
+  create_by: Scalars['String'];
+  published_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type Todo2Aggregator = {
+  __typename?: 'Todo2Aggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type Todo2Connection = {
+  __typename?: 'Todo2Connection';
+  values?: Maybe<Array<Maybe<Todo2>>>;
+  groupBy?: Maybe<Todo2GroupBy>;
+  aggregate?: Maybe<Todo2Aggregator>;
+};
+
+export type Todo2ConnectionCreate_By = {
+  __typename?: 'Todo2ConnectionCreate_by';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<Todo2Connection>;
+};
+
+export type Todo2ConnectionCreatedAt = {
+  __typename?: 'Todo2ConnectionCreatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<Todo2Connection>;
+};
+
+export type Todo2ConnectionId = {
+  __typename?: 'Todo2ConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<Todo2Connection>;
+};
+
+export type Todo2ConnectionPublished_At = {
+  __typename?: 'Todo2ConnectionPublished_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<Todo2Connection>;
+};
+
+export type Todo2ConnectionTitle = {
+  __typename?: 'Todo2ConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<Todo2Connection>;
+};
+
+export type Todo2ConnectionUpdatedAt = {
+  __typename?: 'Todo2ConnectionUpdatedAt';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<Todo2Connection>;
+};
+
+export type Todo2Connection_Id = {
+  __typename?: 'Todo2Connection_id';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<Todo2Connection>;
+};
+
+export type Todo2GroupBy = {
+  __typename?: 'Todo2GroupBy';
+  id?: Maybe<Array<Maybe<Todo2ConnectionId>>>;
+  _id?: Maybe<Array<Maybe<Todo2Connection_Id>>>;
+  createdAt?: Maybe<Array<Maybe<Todo2ConnectionCreatedAt>>>;
+  updatedAt?: Maybe<Array<Maybe<Todo2ConnectionUpdatedAt>>>;
+  title?: Maybe<Array<Maybe<Todo2ConnectionTitle>>>;
+  create_by?: Maybe<Array<Maybe<Todo2ConnectionCreate_By>>>;
+  published_at?: Maybe<Array<Maybe<Todo2ConnectionPublished_At>>>;
+};
+
+export type Todo2Input = {
+  title: Scalars['String'];
+  create_by: Scalars['String'];
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
 };
 
 export type TodoAggregator = {
@@ -1012,6 +1142,12 @@ export type TodoConnection = {
   values?: Maybe<Array<Maybe<Todo>>>;
   groupBy?: Maybe<TodoGroupBy>;
   aggregate?: Maybe<TodoAggregator>;
+};
+
+export type TodoConnectionCreate_By = {
+  __typename?: 'TodoConnectionCreate_by';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<TodoConnection>;
 };
 
 export type TodoConnectionCreatedAt = {
@@ -1064,12 +1200,14 @@ export type TodoGroupBy = {
   updatedAt?: Maybe<Array<Maybe<TodoConnectionUpdatedAt>>>;
   title?: Maybe<Array<Maybe<TodoConnectionTitle>>>;
   finished?: Maybe<Array<Maybe<TodoConnectionFinished>>>;
+  create_by?: Maybe<Array<Maybe<TodoConnectionCreate_By>>>;
   published_at?: Maybe<Array<Maybe<TodoConnectionPublished_At>>>;
 };
 
 export type TodoInput = {
-  title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
   finished?: Maybe<Scalars['Boolean']>;
+  create_by: Scalars['String'];
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -1574,6 +1712,15 @@ export type CreateTeamPayload = {
   team?: Maybe<Team>;
 };
 
+export type CreateTodo2Input = {
+  data?: Maybe<Todo2Input>;
+};
+
+export type CreateTodo2Payload = {
+  __typename?: 'createTodo2Payload';
+  todo2?: Maybe<Todo2>;
+};
+
 export type CreateTodoInput = {
   data?: Maybe<TodoInput>;
 };
@@ -1644,6 +1791,15 @@ export type DeleteTeamInput = {
 export type DeleteTeamPayload = {
   __typename?: 'deleteTeamPayload';
   team?: Maybe<Team>;
+};
+
+export type DeleteTodo2Input = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteTodo2Payload = {
+  __typename?: 'deleteTodo2Payload';
+  todo2?: Maybe<Todo2>;
 };
 
 export type DeleteTodoInput = {
@@ -1745,9 +1901,18 @@ export type EditTeamInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditTodo2Input = {
+  title?: Maybe<Scalars['String']>;
+  create_by?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditTodoInput = {
   title?: Maybe<Scalars['String']>;
   finished?: Maybe<Scalars['Boolean']>;
+  create_by?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -1817,6 +1982,16 @@ export type UpdateTeamPayload = {
   team?: Maybe<Team>;
 };
 
+export type UpdateTodo2Input = {
+  where?: Maybe<InputId>;
+  data?: Maybe<EditTodo2Input>;
+};
+
+export type UpdateTodo2Payload = {
+  __typename?: 'updateTodo2Payload';
+  todo2?: Maybe<Todo2>;
+};
+
 export type UpdateTodoInput = {
   where?: Maybe<InputId>;
   data?: Maybe<EditTodoInput>;
@@ -1848,7 +2023,7 @@ export type CreateTodoMutation = (
     { __typename?: 'createTodoPayload' }
     & { todo?: Maybe<(
       { __typename?: 'Todo' }
-      & Pick<Todo, 'id' | 'title' | 'updatedAt'>
+      & Pick<Todo, 'id' | 'title' | 'create_by' | 'updatedAt'>
     )> }
   )> }
 );
@@ -1893,7 +2068,7 @@ export type GetTodosQuery = (
   { __typename?: 'Query' }
   & { todos?: Maybe<Array<Maybe<(
     { __typename?: 'Todo' }
-    & Pick<Todo, 'id' | 'title' | 'finished' | 'updatedAt'>
+    & Pick<Todo, 'id' | 'title' | 'create_by' | 'finished' | 'updatedAt'>
   )>>> }
 );
 
@@ -1907,7 +2082,7 @@ export type GetTodosWithFetchMoreQuery = (
   { __typename?: 'Query' }
   & { todos?: Maybe<Array<Maybe<(
     { __typename?: 'Todo' }
-    & Pick<Todo, 'id' | 'title' | 'finished' | 'updatedAt'>
+    & Pick<Todo, 'id' | 'title' | 'create_by' | 'finished' | 'updatedAt'>
   )>>>, todosConnection?: Maybe<(
     { __typename?: 'TodoConnection' }
     & { aggregate?: Maybe<(
@@ -1924,6 +2099,7 @@ export const CreateTodoDocument = gql`
     todo {
       id
       title
+      create_by
       updatedAt
     }
   }
@@ -2032,6 +2208,7 @@ export const GetTodosDocument = gql`
   todos(sort: "updatedAt:desc") {
     id
     title
+    create_by
     finished
     updatedAt
   }
@@ -2069,6 +2246,7 @@ export const GetTodosWithFetchMoreDocument = gql`
   todos(limit: $limit, start: $start, sort: "createdAt:desc") {
     id
     title
+    create_by
     finished
     updatedAt
   }

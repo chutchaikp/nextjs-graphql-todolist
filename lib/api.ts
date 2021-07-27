@@ -2,27 +2,27 @@ import axios from "axios";
 // import { findDeprecatedUsages } from "graphql";
 // import { GetTodosWithFetchMoreDocument } from "../src/types/generated";
 
-let _jwt = "";
-let _identifier = "";
+import cookie from "cookie";
 
-export async function GraphQLLogin() {
+export async function GraphQLLogin(req: any, res: any) {
 	try {
-		if (_jwt) {
-			return _jwt;
-		}
-
-		debugger;
-
 		const url = `${process.env.GRAPHQL_SCHEMA_BASE_URL}/auth/local`;
 		const { data } = await axios.post(url, {
 			identifier: process.env.GRAPHQL_USER,
 			password: process.env.GRAPHQL_PASSWORD,
 		});
 
-		// get token from graphql server		
-		// localStorage.setItem('token', data.jwt)
-		_jwt = data.jwt
-		return _jwt;
+		res.setHeader(
+			"Set-Cookie",
+			cookie.serialize("token", data.jwt, {
+				httpOnly: true,
+				secure: process.env.NODE_ENV !== "development",
+				maxAge: 60 * 60,
+				sameSite: "strict",
+				path: "/",
+			})
+		);
+		return data.jwt
 
 	} catch (error) {
 		return "";
@@ -30,19 +30,30 @@ export async function GraphQLLogin() {
 	}
 }
 
-async function fetchAPI(query: any, { variables }: any = {}) {
+async function fetchAPI(token: any, query: any, { variables }: any = {}) {
 	try {
 
 		const res = await fetch(`${process.env.GRAPHQL_SCHEMA_BASE_URL}/graphql`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
+				"Authorization": `Bearer ${token}`,
 			},
 			body: JSON.stringify({
 				query,
 				variables,
 			}),
 		})
+
+		// axios.get(api, { headers: {"Authorization" : `Bearer ${token}`} })
+		//     .then(res => {
+		// const { data } = await axios({
+		// 	method: 'post',
+		// 	url: `${process.env.GRAPHQL_SCHEMA_BASE_URL}/graphql`,
+		// 	headers: { "Authorization": `Bearer ${token}` },
+		// 	data: JSON.stringify({ query, variables, }),
+		// });
+
 		const json = await res.json()
 		if (json.errors) {
 			console.error(json.errors)
@@ -90,11 +101,8 @@ query GetTodosWithFetchMore($limit: Int, $start: Int) {
 		`;
  */
 
-export async function GetTodosForHome() {
-
-	debugger;
-
-	const data = await fetchAPI(
+export async function GetTodosForHome(token: any) {
+	const data = await fetchAPI(token,
 		// 	`
 		//   query Posts($where: JSON){
 		//     posts(sort: "date:desc", limit: 10, where: $where) {
@@ -112,6 +120,7 @@ export async function GetTodosForHome() {
 							id
 							title
 							finished
+							create_by
 							updatedAt
 						}
 						todosConnection {

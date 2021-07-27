@@ -3,6 +3,7 @@ mutation CreateTodo($todo: TodoInput) {
     todo {
       id
       title
+      create_by
       updatedAt
     }
   }

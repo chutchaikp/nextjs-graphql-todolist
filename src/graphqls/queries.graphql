@@ -2,6 +2,7 @@ query GetTodos {
   todos(sort: "updatedAt:desc") {
     id
     title
+    create_by
     finished
     updatedAt
   }
@@ -11,6 +12,7 @@ query GetTodosWithFetchMore($limit: Int, $start: Int) {
   todos(limit: $limit, start: $start, sort: "createdAt:desc") {
     id
     title
+    create_by
     finished
     updatedAt
   }
