@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import styles from './header.module.css'
-import Image from 'next/image'
 import React from 'react';
 import { Box, Flex, VStack } from '@chakra-ui/react';
 import { useUser } from '@auth0/nextjs-auth0';
@@ -32,8 +32,7 @@ export default function Header() {
 					{user && (
 						<Flex direction="row" align="center" justify="space-between" w="100%"  >
 							<Flex w="250px" justify="center" align="center">
-
-								<Image src={user?.picture || ""} alt={user?.name || ""} width="45px" height="45px" />
+								<img src={user?.picture || ""} alt={user?.name || ""} width="45px" height="45px" />
 
 								<Box lineHeight="1.25rem" style={{ fontSize: '1rem', paddingLeft: '0.75rem', textAlign: 'left', }} >
 									<div>Signed in as</div>
